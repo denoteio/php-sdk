@@ -278,6 +278,94 @@ error_reporting(E_ALL);
     }
 
 
+
+// Domains
+
+
+    // Create a Domain
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteDomain::create($engineId, array(
+            'domain'   =>      'www.inextweb.com',
+            'seeds'   =>        array(
+                'www.inextweb.com/contactus',
+                'www.inextweb.com/aboutus'
+            ),
+            'patterns'   =>     array(
+                '!www.inextweb.com/image*',
+                'www.inextweb.com/a*'
+            ),
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+    // Modify a Domain
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $domainId = '5285c6da46b1f4b02d1883ce';
+        $response = DenoteDomain::modify($engineId, $domainId, array(
+            'domain'   =>      'www.inextweb.com',
+            'seeds'   =>        array(
+                'www.inextweb.com/contactus',
+                'www.inextweb.com/aboutus'
+            ),
+            'patterns'   =>     array(
+                '!www.inextweb.com/image*',
+                'www.inextweb.com/a*'
+            ),
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
+
+
+    // Get a domain
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $domainId = '5285bc4146b1f4b02d1883a7';
+        $response = DenoteDomain::get($engineId, $domainId);
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
+    // Get all domains
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteDomain::getAll($engineId);
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
+    // Remove a domain
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $domainId = '5285bc4146b1f4b02d1883a7';
+        $response = DenoteDomain::remove($engineId, $domainId);
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
 function pre($s){
     echo '<pre>';
     print_r($s);

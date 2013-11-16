@@ -30,7 +30,7 @@ class DenoteDomain{
 	public function create($engineId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->post('engines/'.$engineId.'/documents', $data);
+		$result = $connect->post('engines/'.$engineId.'/domains', $data);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
@@ -39,10 +39,10 @@ class DenoteDomain{
 
 	}
 
-	public function modify($engineId, $documentId, $data){
+	public function modify($engineId, $domainId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->put('engines/'.$engineId.'/documents/'.$documentId, $data);
+		$result = $connect->put('engines/'.$engineId.'/domains/'.$domainId, $data);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
@@ -51,10 +51,11 @@ class DenoteDomain{
 	}
 
 
-	public function createMultiple($engineId, $data){
+
+	public function get($engineId, $domainId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->post('engines/'.$engineId.'/documents/bulk', $data);
+		$result = $connect->get('engines/'.$engineId.'/domains/'.$domainId);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
@@ -63,10 +64,10 @@ class DenoteDomain{
 	}
 
 
-	public function get($engineId, $documentId){
+	public function getAll($engineId, $params=array()){
 
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->get('engines/'.$engineId.'/documents/'.$documentId);
+		$result = $connect->get('engines/'.$engineId.'/domains', $params);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
@@ -75,33 +76,10 @@ class DenoteDomain{
 	}
 
 
-	public function getAll($engineId, $params){
+	public function remove($engineId, $domainId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->get('engines/'.$engineId.'/documents', $params);
-		if (isset($result->error_id)){ // Response includes an Error
-			throw new DenoteException($result->error_message, $result->error_id);
-		} else {
-			return $result;
-		}
-	}
-
-
-	public function remove($engineId, $documentId){
-
-		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->delete('engines/'.$engineId.'/documents/'.$documentId);
-		if (isset($result->error_id)){ // Response includes an Error
-			throw new DenoteException($result->error_message, $result->error_id);
-		} else {
-			return $result;
-		}
-	}
-
-	public function removeAll($engineId, $params){
-
-		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->delete('engines/'.$engineId.'/documents/', $params);
+		$result = $connect->delete('engines/'.$engineId.'/domains/'.$domainId);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
