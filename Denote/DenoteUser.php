@@ -25,10 +25,10 @@
 class DenoteUser{
 
 
-	public function __construct(){}
+	public static function __construct(){}
 
 
-	public function limits(){
+	public static function limits(){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('user/limits');

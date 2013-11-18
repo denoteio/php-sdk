@@ -28,7 +28,7 @@ error_reporting(E_ALL);
 
 
     // Set access_token. This key can be found in your dashboard 
-    Denote::initClient('535a12b0febcc946530eb001d85b6a923f72b7c9');
+    Denote::initClient('48182b7054d67815f49ef47bbdd1a24f4c3ba2ef');
 
 
     ////////////////////////////////////
@@ -254,8 +254,8 @@ error_reporting(E_ALL);
 
         $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
         $documentId = '5285bc4146b1f4b02d1883a7';
-        $response = DenoteDocument::remove($engineId, $documentId);
-        pre($response);
+   //     $response = DenoteDocument::remove($engineId, $documentId);
+     //   pre($response);
 
     } catch (DenoteException $e){
         echo $e;
@@ -267,11 +267,11 @@ error_reporting(E_ALL);
     try {
 
         $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
-        $response = DenoteDocument::removeAll($engineId, array(
-            'bucket_name'   =>          '/Contacts.*/i',           // An optional PCRE regular expression to specify bucket_name. If not provided all buckets are searched and removed
-            'external_id'   =>          '/A3.*/'                   // An optional PCRE regular expression to specify external_id. If not provided all external_ids are searched and removed
-        ));
-        pre($response);
+     //   $response = DenoteDocument::removeAll($engineId, array(
+     //       'bucket_name'   =>          '/Contacts.*/i',           // An optional PCRE regular expression to specify bucket_name. If not provided all buckets are searched and removed
+      //      'external_id'   =>          '/A3.*/'                   // An optional PCRE regular expression to specify external_id. If not provided all external_ids are searched and removed
+     //   ));
+     //   pre($response);
 
     } catch (DenoteException $e){
         echo $e;

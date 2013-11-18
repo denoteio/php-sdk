@@ -26,9 +26,9 @@ class Denote{
 
     static $access_token;
 
-    public function __construct(){}
+    public static function __construct(){}
 
-    public function initClient($token){
+    public static function initClient($token){
         self::$access_token = $token;
     }
 }

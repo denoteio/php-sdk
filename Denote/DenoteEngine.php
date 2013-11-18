@@ -24,9 +24,9 @@
 
 class DenoteEngine{
 
-	public function __construct(){}
+	public static function __construct(){}
 
-	public function create($data){
+	public static function create($data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->post('engines', $data);
@@ -38,7 +38,7 @@ class DenoteEngine{
 	}
 
 
-	public function get($engineId){
+	public static function get($engineId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines/'.$engineId);
@@ -50,7 +50,7 @@ class DenoteEngine{
 	}
 
 
-	public function getAll(){
+	public static function getAll(){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines');
@@ -62,7 +62,7 @@ class DenoteEngine{
 	}
 
 
-	public function remove($engineId){
+	public static function remove($engineId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->delete('engines/'.$engineId);

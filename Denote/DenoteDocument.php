@@ -24,10 +24,10 @@
 
 class DenoteDocument{
 
-	public function __construct(){}
+	public static function __construct(){}
 
 
-	public function create($engineId, $data){
+	public static function create($engineId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->post('engines/'.$engineId.'/documents', $data);
@@ -39,7 +39,7 @@ class DenoteDocument{
 
 	}
 
-	public function modify($engineId, $documentId, $data){
+	public static function modify($engineId, $documentId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->put('engines/'.$engineId.'/documents/'.$documentId, $data);
@@ -51,7 +51,7 @@ class DenoteDocument{
 	}
 
 
-	public function createMultiple($engineId, $data){
+	public static function createMultiple($engineId, $data){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->post('engines/'.$engineId.'/documents/bulk', $data);
@@ -63,7 +63,7 @@ class DenoteDocument{
 	}
 
 
-	public function get($engineId, $documentId){
+	public static function get($engineId, $documentId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines/'.$engineId.'/documents/'.$documentId);
@@ -75,7 +75,7 @@ class DenoteDocument{
 	}
 
 
-	public function getAll($engineId, $params){
+	public static function getAll($engineId, $params){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines/'.$engineId.'/documents', $params);
@@ -87,7 +87,7 @@ class DenoteDocument{
 	}
 
 
-	public function remove($engineId, $documentId){
+	public static function remove($engineId, $documentId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->delete('engines/'.$engineId.'/documents/'.$documentId);
@@ -98,7 +98,7 @@ class DenoteDocument{
 		}
 	}
 
-	public function removeAll($engineId, $params){
+	public static function removeAll($engineId, $params){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->delete('engines/'.$engineId.'/documents/', $params);

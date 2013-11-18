@@ -24,10 +24,10 @@
 
 class DenoteDomain{
 
-	public function __construct(){}
+	public static function __construct(){}
 
 
-	public function create($engineId, $data){
+	public static function create($engineId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->post('engines/'.$engineId.'/domains', $data);
@@ -39,7 +39,7 @@ class DenoteDomain{
 
 	}
 
-	public function modify($engineId, $domainId, $data){
+	public static function modify($engineId, $domainId, $data){
 		
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->put('engines/'.$engineId.'/domains/'.$domainId, $data);
@@ -52,7 +52,7 @@ class DenoteDomain{
 
 
 
-	public function get($engineId, $domainId){
+	public static function get($engineId, $domainId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines/'.$engineId.'/domains/'.$domainId);
@@ -64,7 +64,7 @@ class DenoteDomain{
 	}
 
 
-	public function getAll($engineId, $params=array()){
+	public static function getAll($engineId, $params=array()){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('engines/'.$engineId.'/domains', $params);
@@ -76,7 +76,7 @@ class DenoteDomain{
 	}
 
 
-	public function remove($engineId, $domainId){
+	public static function remove($engineId, $domainId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->delete('engines/'.$engineId.'/domains/'.$domainId);

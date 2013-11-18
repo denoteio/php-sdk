@@ -24,10 +24,10 @@
 
 class DenoteAPI{
 
-	public function __construct(){}
+	public static function __construct(){}
 
 
-	public function version(){
+	public static function version(){
 
 		$connect = new DenoteConnect(Denote::$access_token);
 		$result = $connect->get('system/version');
