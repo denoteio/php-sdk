@@ -24,7 +24,7 @@
 
 class DenoteEngine{
 
-	public static function __construct(){}
+	public  function __construct(){}
 
 	public static function create($data){
 		

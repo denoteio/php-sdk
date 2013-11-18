@@ -24,7 +24,7 @@
 
 class DenoteAPI{
 
-	public static function __construct(){}
+	public function __construct(){}
 
 
 	public static function version(){
