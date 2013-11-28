@@ -2,7 +2,7 @@
 		
 class DenoteConnect{
 
-	public $endpoint = 'https://denote.io/platform/api/v1/';
+	public $endpoint = 'http://denote.cloudapp.net/api/v1/';
 	const USER_AGENT = 'Denote.io/2.1 (+http://www.denote.io)';
 	
 	private $access_token;

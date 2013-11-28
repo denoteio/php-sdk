@@ -29,7 +29,11 @@ class DenoteException extends Exception{
     }
 
     public function __toString() {
-        return __CLASS__ . ": [{$this->code}]\n {$this->message}\n<br>";
+        return "[{$this->code}]\n {$this->message}\n<br>";
+    }
+
+    public function getMessageStr(){
+    	return $this->message;
     }
 
 }

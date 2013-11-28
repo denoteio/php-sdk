@@ -30,7 +30,6 @@ error_reporting(E_ALL);
     // Set access_token. This key can be found in your dashboard 
     Denote::initClient('48182b7054d67815f49ef47bbdd1a24f4c3ba2ef');
 
-
     ////////////////////////////////////
     // System
     ////////////////////////////////////
