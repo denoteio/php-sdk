@@ -415,18 +415,18 @@ error_reporting(E_ALL);
             "sort"          => array("salary:desc", "title:asc"),
             "filters"       => array(
                 array(
-                    "method"   : "range",
-                    "type"     : "float",
-                    "field"    : "salary",
-                    "from"     : 1,
-                    "to"       : 120000
+                    "method"   => "range",
+                    "type"     => "float",
+                    "field"    => "salary",
+                    "from"     => 1,
+                    "to"       => 120000
                 ),
                 array(
-                    "method"    : "range",
-                    "type"      : "float",
-                    "field"     : "bonus",
-                    "from"      : 1,
-                    "to"        : 10000
+                    "method"    => "range",
+                    "type"      => "float",
+                    "field"     => "bonus",
+                    "from"      => 1,
+                    "to"        => 10000
                 )
             ),
             "visitor_id"    => "123"// optional
