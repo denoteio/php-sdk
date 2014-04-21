@@ -2,7 +2,7 @@
 		
 class DenoteConnect{
 
-	public $endpoint = 'http://denote.cloudapp.net/api/v1/';
+	public $endpoint = 'https://api.denote.io/api/v1/';
 	const USER_AGENT = 'Denote.io/2.1 (+http://www.denote.io)';
 	
 	private $access_token;
@@ -40,6 +40,7 @@ class DenoteConnect{
         $this->setopt(CURLINFO_HEADER_OUT, TRUE);
         $this->setopt(CURLOPT_HEADER, TRUE);
         $this->setopt(CURLOPT_RETURNTRANSFER, TRUE);
+        $this->setopt(CURLOPT_SSL_VERIFYPEER, false);
     }
 
     function get($service, $data=array()) {
@@ -47,14 +48,20 @@ class DenoteConnect{
         $this->setopt(CURLOPT_URL, $this->endpoint.$service . '?' . http_build_query($data));
         $this->setopt(CURLOPT_HTTPGET, TRUE);
         $this->_exec();
+       // echo $this->response;
         return json_decode($this->response);
     }
 
     function post($service, $json=array() ,$data=array()) {
+
         $this->setopt(CURLOPT_URL, $this->endpoint.$service . '?access_token='.$this->access_token);
         $this->setopt(CURLOPT_POST, TRUE);
         $this->setopt(CURLOPT_POSTFIELDS, $this->_postfields($json));
         $this->_exec();
+       // pre($this->response);
+      //  $d = json_decode($this->response);
+        //        pre($d);
+      //  exit();
         return json_decode($this->response);
     }
 

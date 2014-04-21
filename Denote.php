@@ -31,6 +31,10 @@ require_once(dirname(__FILE__) . '/Denote/DenoteEngine.php');
 require_once(dirname(__FILE__) . '/Denote/DenoteDocument.php');
 require_once(dirname(__FILE__) . '/Denote/DenoteDomain.php');
 require_once(dirname(__FILE__) . '/Denote/DenoteUser.php');
+require_once(dirname(__FILE__) . '/Denote/DenoteAnalytics.php');
+require_once(dirname(__FILE__) . '/Denote/DenoteSearch.php');
+require_once(dirname(__FILE__) . '/Denote/DenotePosition.php');
 require_once(dirname(__FILE__) . '/Denote/DenoteException.php');
+
 
 ?>

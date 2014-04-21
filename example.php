@@ -31,7 +31,7 @@ error_reporting(E_ALL);
     Denote::initClient('48182b7054d67815f49ef47bbdd1a24f4c3ba2ef');
 
     ////////////////////////////////////
-    // System
+    // System Version
     ////////////////////////////////////
 
     try{
@@ -40,6 +40,20 @@ error_reporting(E_ALL);
     } catch (DenoteException $e){
         echo $e;
     }
+
+
+    ////////////////////////////////////
+    // System Status
+    ////////////////////////////////////
+
+    try{
+        $response = DenoteAPI::status();
+        pre($response);
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
 
 
     ////////////////////////////////////
@@ -358,6 +372,168 @@ error_reporting(E_ALL);
         $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
         $domainId = '5285bc4146b1f4b02d1883a7';
         $response = DenoteDomain::remove($engineId, $domainId);
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+// Search
+
+
+    // Simple search
+     try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteSearch::search($engineId, array(
+            "q"  =>  "today",
+            "page"    =>  1,
+            "per_page" =>  4,
+            "visitor_id" => "123"// optional
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+   
+
+
+
+   // Advanced Search
+     try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteSearch::search($engineId, array(
+            "q"             =>  "Software Developer",
+            "page"          =>  1,
+            "per_page"      =>  4,
+            "buckets"       => array("cvss","jobs"),
+            "search_fields" => array("Programming Skills^12", "title^3~1"),
+            "return_fields" => array("title", "salary"),
+            "facets"        => array("title", "salary"),
+            "sort"          => array("salary:desc", "title:asc"),
+            "filters"       => array(
+                array(
+                    "method"   : "range",
+                    "type"     : "float",
+                    "field"    : "salary",
+                    "from"     : 1,
+                    "to"       : 120000
+                ),
+                array(
+                    "method"    : "range",
+                    "type"      : "float",
+                    "field"     : "bonus",
+                    "from"      : 1,
+                    "to"        : 10000
+                )
+            ),
+            "visitor_id"    => "123"// optional
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }    
+
+
+
+// Analytics
+
+
+    // Get all Searches
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::allSearches($engineId, array(
+            "from"  =>  "today",
+            "to"    =>  "now",
+            "query" =>  "test" // optional
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+    // Count all Searches
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::countTotalSearches($engineId, array(
+            "from"  =>  "today",
+            "to"    =>  "now",
+            "query" =>  "test", // optional
+            "interval"  =>  1800 // optional - Number of seconds
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+    // Count all Searches that had results
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::countTotalSearchesWithResults($engineId, array(
+            "from"  =>  "today",
+            "to"    =>  "now",
+            "query" =>  "test", // optional
+            "interval"  =>  1800 // optional - Number of seconds
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+    // Count all Searches that did not have results
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::countTotalSearchesWithNoResults($engineId, array(
+            "from"  =>  "today",
+            "to"    =>  "now",
+            "query" =>  "test", // optional
+            "interval"  =>  1800 // optional - Number of seconds
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+
+
+    // Get all clicks
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::allClicks($engineId, array(
+            "from"  =>  "today",
+            "to"    =>  "now",
+            "query" =>  "test", // optional
+            "document_id" =>  "52ab7cdd0744231fe31c25a8" // optional
+        ));
+        pre($response);
+
+    } catch (DenoteException $e){
+        echo $e;
+    }
+
+    // Count all Searches
+    try {
+
+        $engineId = 'dEn5285b7fc49de98r3qs65001529ote';
+        $response = DenoteAnalytics::countTotalClicks($engineId, array(
+            "from"  =>  "-1 hour",
+            "to"    =>  "now",
+            "query" =>  "test", // optional
+            "document_id" =>  "52ab7cdd0744231fe31c25a8", // optional
+            "interval"  =>  1800 // optional - Number of seconds
+        ));
         pre($response);
 
     } catch (DenoteException $e){

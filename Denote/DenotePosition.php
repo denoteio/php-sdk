@@ -22,15 +22,16 @@
 // API Major Version: 1
 
 
-class DenoteAPI{
+class DenotePosition{
+
 
 	public function __construct(){}
 
 
-	public static function version(){
+	public static function getQueries($engineId){
 
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->get('system/version');
+		$result = $connect->get('engines/'.$engineId.'/position_queries');
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
@@ -38,16 +39,20 @@ class DenoteAPI{
 		}
 	}
 
-		public static function status(){
+
+	public static function removeQuery($engineId, $params){
 
 		$connect = new DenoteConnect(Denote::$access_token);
-		$result = $connect->get('system/status');
+		$result = $connect->get('engines/'.$engineId.'/remove_position_query', $params);
 		if (isset($result->error_id)){ // Response includes an Error
 			throw new DenoteException($result->error_message, $result->error_id);
 		} else {
 			return $result;
 		}
 	}
+
+	
+
 
 
 }
